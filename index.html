@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="author" content="Katrina H. Chan"/>
+    <meta name="description" content="Ten-year Yakusoku of NTUSLC B01"/>
+    <title>十年後 Otis 請客</title>
+    <style>
+    body {
+      font-size: 32px;
+    }
+    </style>
+  </head>
+  <body>
+    <div>距離 Otis 請客，還有 <span id="holder"></span>！</div>
+    <script>
+    const goal = new Date('2024-12-05T22:35:00+08:00');
+    const setTime = () => {
+      var current = Date.now();
+      var delta = (goal - current) / 1000;
+
+      var days = Math.floor(delta / 60 / 60 / 24);
+      var hours = Math.floor(delta / 60 / 60 - days * 24);
+      var minutes = Math.floor(delta / 60 - (hours + days * 24) * 60);
+      var seconds = Math.floor(delta - (minutes + (hours + days * 24) * 60) * 60);
+
+      document.querySelector('#holder').innerText = (
+        days + ' 天 ' +
+        hours + ' 時 ' +
+        minutes + ' 分 ' +
+        seconds + ' 秒'
+      );
+    }
+
+    window.addEventListener('load', setTime);
+    const clock = setInterval(setTime, 1000);
+    </script>
+  </body>
+</html>
